@@ -278,7 +278,7 @@
     /* Table of Contents Styles */
     .toc {
       position: fixed;
-      left: max(1rem, calc(50% - 800px)); /* Position to left of centered content */
+      left: 1rem;
       top: 0;
       bottom: 0;
       width: 280px;
@@ -421,7 +421,7 @@
     }
 
     /* Tablet: Auto-collapse ToC, expand on hover */
-    @media (max-width: 1200px) {
+    @media (max-width: 1024px) {
       .toc {
         width: 60px;
         left: 1rem;
@@ -1435,7 +1435,7 @@
 
       // Load saved ToC state from localStorage
       const savedCollapsedState = localStorage.getItem('toc-collapsed');
-      if (savedCollapsedState === 'true' && window.innerWidth >= 1200) {
+      if (savedCollapsedState === 'true' && window.innerWidth >= 1025) {
         toc.classList.add('collapsed');
         tocToggle.setAttribute('aria-expanded', 'false');
         tocToggle.setAttribute('aria-label', 'Expand table of contents');
@@ -1545,7 +1545,7 @@
           }
 
           // Restore collapsed state on desktop, remove on tablet/mobile
-          if (window.innerWidth >= 1200) {
+          if (window.innerWidth >= 1025) {
             const savedState = localStorage.getItem('toc-collapsed');
             if (savedState === 'true') {
               toc.classList.add('collapsed');
