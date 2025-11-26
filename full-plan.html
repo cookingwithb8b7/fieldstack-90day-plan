@@ -304,27 +304,6 @@
       font-size: 1.2rem;
       color: var(--accent-primary);
       margin: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .toc-toggle {
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .toc-toggle:hover {
-      background: var(--accent-primary);
-      color: var(--bg-primary);
-      border-color: var(--accent-primary);
     }
 
     .toc-nav {
@@ -370,35 +349,6 @@
       transition: opacity 0.3s ease;
     }
 
-    /* Collapsed ToC State */
-    .toc.collapsed {
-      width: 60px;
-      overflow-y: hidden; /* No scrolling in collapsed state */
-    }
-
-    .toc.collapsed .toc-title,
-    .toc.collapsed .toc-text {
-      display: none;
-    }
-
-    .toc.collapsed .toc-toggle span {
-      transform: rotate(180deg);
-    }
-
-    .toc.collapsed .toc-link {
-      justify-content: center;
-      padding: 0.75rem 0;
-      overflow: hidden; /* Clip any overflowing content */
-    }
-
-    .toc.collapsed .toc-nav {
-      overflow: hidden; /* Prevent content overflow */
-    }
-
-    .toc.collapsed .toc-header {
-      justify-content: center;
-      padding: 0.5rem;
-    }
 
     /* Mobile ToC Toggle Button */
     .mobile-toc-toggle {
@@ -607,9 +557,6 @@
   <aside id="toc" class="toc" aria-label="Table of Contents">
     <div class="toc-header">
       <h2 class="toc-title">Contents</h2>
-      <button class="toc-toggle" aria-label="Collapse table of contents" aria-expanded="true" aria-controls="toc-nav">
-        <span aria-hidden="true">◀</span>
-      </button>
     </div>
 
     <nav id="toc-nav" class="toc-nav">
@@ -1444,22 +1391,11 @@
     (function() {
       'use strict';
 
-      // Clean up old localStorage from previous version
-      localStorage.removeItem('toc-collapsed');
-
       // DOM Elements
       const toc = document.getElementById('toc');
-      const tocToggle = document.querySelector('.toc-toggle');
       const mobileTocToggle = document.getElementById('mobile-toc-toggle');
       const tocLinks = document.querySelectorAll('.toc-link');
       const sections = document.querySelectorAll('h2[id]');
-
-      // Desktop Toggle: Collapse/Expand
-      tocToggle.addEventListener('click', function() {
-        const isCollapsed = toc.classList.toggle('collapsed');
-        tocToggle.setAttribute('aria-expanded', !isCollapsed);
-        tocToggle.setAttribute('aria-label', isCollapsed ? 'Expand table of contents' : 'Collapse table of contents');
-      });
 
       // Mobile Toggle: Open/Close overlay
       mobileTocToggle.addEventListener('click', function() {
@@ -1552,11 +1488,6 @@
             toc.classList.remove('mobile-open');
             mobileTocToggle.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
-          }
-
-          // Remove collapsed state on tablet/mobile
-          if (window.innerWidth < 1025) {
-            toc.classList.remove('collapsed');
           }
         }, 250);
       });
