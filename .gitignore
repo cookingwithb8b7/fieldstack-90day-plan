@@ -18,6 +18,9 @@ v1/
 .vscode/
 .vscode-test/
 
+# Claude Code settings
+.claude/
+
 # Node modules (if added later)
 node_modules/
 
