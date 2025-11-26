@@ -228,6 +228,110 @@
         font-size: 0.75rem;
         padding: 1rem;
       }
+
+      .module-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .module-box {
+        padding: 1.5rem;
+      }
+
+      .module-box h3 {
+        font-size: 1.2rem;
+      }
+
+      .parallel-modules {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .module-grid {
+      display: grid;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .module-box {
+      background: var(--bg-tertiary);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .module-box.foundational {
+      border-color: var(--accent-primary);
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, rgba(20, 184, 166, 0.05) 100%);
+    }
+
+    .module-box h3 {
+      color: var(--accent-primary);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .module-box .module-timeline {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .module-box ul {
+      list-style: none;
+      margin: 1rem 0;
+      padding: 0;
+    }
+
+    .module-box li {
+      color: var(--text-secondary);
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .module-box li:before {
+      content: "→";
+      color: var(--accent-primary);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .module-output {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .parallel-modules {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .module-connector {
+      text-align: center;
+      color: var(--accent-primary);
+      font-size: 2rem;
+      margin: 1rem 0;
+      font-weight: 300;
+    }
+
+    .future-note {
+      background: rgba(20, 184, 166, 0.1);
+      border-left: 4px solid var(--accent-primary);
+      padding: 1rem 1.5rem;
+      margin-top: 2rem;
+      border-radius: 4px;
+      color: var(--text-secondary);
+      font-style: italic;
     }
     
     .nav {
@@ -343,72 +447,99 @@
     
     <div class="section">
       <h2>Module Overview & Dependencies</h2>
-      
-      <div class="module-map">
-        <pre>
-┌─────────────────────────────────────────────────────────────────┐
-│                     MODULE 1: TRUST BUILDING                     │
-│                    (Days 1-30, foundational)                     │
-│                                                                   │
-│  • Individual 1-on-1s    • Shadow & learn                       │
-│  • Workflow documentation • Training review                      │
-│  • Attend client calls   • Understand current state             │
-│                                                                   │
-│  OUTPUT: Team relationships, baseline understanding              │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-        ┌────────────────────┼────────────────────┐
-        │                    │                    │
-        ▼                    ▼                    ▼
-┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
-│    MODULE 2:     │  │    MODULE 3:     │  │    MODULE 4:     │
-│   QUICK WINS     │  │  DOCUMENTATION   │  │  METRICS & DATA  │
-│ (Days 15-60)     │  │ (Days 30-90)     │  │  (Days 60-90)    │
-│                  │  │                  │  │                  │
-│ • Fix broken     │  │ • Process SOPs   │  │ • Ticket         │
-│   processes      │  │ • Internal KB    │  │   lifecycle      │
-│ • Escalation     │  │ • Customer KB    │  │ • Deduplication  │
-│   paths          │  │ • KB rotation    │  │ • Metrics        │
-│ • Ticket coord   │  │ • Categorization │  │ • Dashboard      │
-│   rotation       │  │ • Review assets  │  │ • Top drivers    │
-│ • Team meetings  │  │                  │  │ • Client comms   │
-│ • Support matrix │  │                  │  │                  │
-│                  │  │                  │  │                  │
-│ OUTPUT: Quick    │  │ OUTPUT: Scaling  │  │ OUTPUT: Data     │
-│ credibility,     │  │ foundation,      │  │ foundation,      │
-│ team confidence  │  │ preserved know.  │  │ insights         │
-└──────────────────┘  └──────────────────┘  └──────────────────┘
-        │                    │                    │
-        └────────────────────┼────────────────────┘
-                             │
-                             ▼
-        ┌────────────────────────────────────────────────┐
-        │            MODULE 5: SCALING PREP              │
-        │              (Days 60-90)                      │
-        │                                                 │
-        │ • Training infrastructure (3 phases)            │
-        │ • Training Analyst roles (voluntary)            │
-        │ • Enterprise playbook                           │
-        │ • Hiring plan (if needed)                       │
-        │                                                 │
-        │ OUTPUT: Ready for growth, bench built           │
-        └─────────────────┬──────────────────────────────┘
-                          │
-                          ▼
-        ┌────────────────────────────────────────────────┐
-        │        MODULE 6: STRATEGIC POSITIONING         │
-        │              (Ongoing)                         │
-        │                                                 │
-        │ • Account Mgmt sync (early warning system)      │
-        │ • Product feedback loop (quarterly insights)    │
-        │ • Clear escalation framework (Tier 1/2/3)       │
-        │ • Cross-functional communication standards      │
-        │                                                 │
-        │ OUTPUT: Support as strategic partner            │
-        └────────────────────────────────────────────────┘
 
-FUTURE: Data Access & Governance (Post-90 days, See Appendix A)
-        </pre>
+      <div class="module-map">
+        <!-- Module 1: Foundation -->
+        <div class="module-box foundational">
+          <h3>Module 1: Trust Building</h3>
+          <div class="module-timeline">Days 1-30 • Foundational</div>
+          <ul>
+            <li>Individual 1-on-1s</li>
+            <li>Shadow & learn workflows</li>
+            <li>Review training materials</li>
+            <li>Attend client calls</li>
+            <li>Document current state</li>
+          </ul>
+          <div class="module-output">OUTPUT: Team relationships, baseline understanding</div>
+        </div>
+
+        <div class="module-connector">↓</div>
+
+        <!-- Modules 2, 3, 4: Parallel execution -->
+        <div class="parallel-modules">
+          <div class="module-box">
+            <h3>Module 2: Quick Wins</h3>
+            <div class="module-timeline">Days 15-60</div>
+            <ul>
+              <li>Fix broken processes</li>
+              <li>Escalation paths</li>
+              <li>Ticket coordinator rotation</li>
+              <li>Team meetings structure</li>
+              <li>Support matrix</li>
+            </ul>
+            <div class="module-output">OUTPUT: Quick credibility, team confidence</div>
+          </div>
+
+          <div class="module-box">
+            <h3>Module 3: Documentation</h3>
+            <div class="module-timeline">Days 30-90</div>
+            <ul>
+              <li>Process SOPs</li>
+              <li>Internal knowledge base</li>
+              <li>Customer-facing KB</li>
+              <li>KB maintenance rotation</li>
+              <li>Categorization system</li>
+            </ul>
+            <div class="module-output">OUTPUT: Scaling foundation, preserved knowledge</div>
+          </div>
+
+          <div class="module-box">
+            <h3>Module 4: Metrics & Data</h3>
+            <div class="module-timeline">Days 60-90</div>
+            <ul>
+              <li>Ticket lifecycle analysis</li>
+              <li>Deduplication strategy</li>
+              <li>Metrics framework</li>
+              <li>Dashboard design</li>
+              <li>Client communications</li>
+            </ul>
+            <div class="module-output">OUTPUT: Data foundation, actionable insights</div>
+          </div>
+        </div>
+
+        <div class="module-connector">↓</div>
+
+        <!-- Module 5: Scaling -->
+        <div class="module-box">
+          <h3>Module 5: Scaling Prep</h3>
+          <div class="module-timeline">Days 60-90</div>
+          <ul>
+            <li>Training infrastructure (3 phases)</li>
+            <li>Training Analyst roles (voluntary)</li>
+            <li>Enterprise playbook</li>
+            <li>Hiring plan (if needed)</li>
+          </ul>
+          <div class="module-output">OUTPUT: Ready for growth, bench built</div>
+        </div>
+
+        <div class="module-connector">↓</div>
+
+        <!-- Module 6: Strategic -->
+        <div class="module-box">
+          <h3>Module 6: Strategic Positioning</h3>
+          <div class="module-timeline">Ongoing</div>
+          <ul>
+            <li>Account Management sync (early warning system)</li>
+            <li>Product feedback loop (quarterly insights)</li>
+            <li>Clear escalation framework (Tier 1/2/3)</li>
+            <li>Cross-functional communication standards</li>
+          </ul>
+          <div class="module-output">OUTPUT: Support as strategic partner</div>
+        </div>
+
+        <div class="future-note">
+          <strong>FUTURE:</strong> Data Access & Governance (Post-90 days, See <a href="appendix-a.html">Appendix A</a>)
+        </div>
       </div>
     </div>
     
