@@ -94,6 +94,23 @@
       margin-bottom: 0.5rem;
       color: var(--text-primary);
       font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .h1-title {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .h1-subtitle {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
     }
 
     .subtitle {
@@ -268,6 +285,7 @@
       background: var(--bg-secondary);
       border-right: 1px solid var(--border-color);
       overflow-y: auto;
+      overflow-x: hidden; /* Prevent horizontal scrollbar */
       transition: width 0.3s ease, left 0.3s ease;
       z-index: 50;
       padding: 2rem 0;
@@ -354,6 +372,7 @@
     /* Collapsed ToC State */
     .toc.collapsed {
       width: 60px;
+      overflow-y: hidden; /* No scrolling in collapsed state */
     }
 
     .toc.collapsed .toc-title,
@@ -369,6 +388,12 @@
     .toc.collapsed .toc-link {
       justify-content: center;
       padding: 0.75rem 0;
+      overflow: hidden; /* Clip any overflowing content */
+    }
+
+    .toc.collapsed .toc-header,
+    .toc.collapsed .toc-nav {
+      overflow: hidden; /* Prevent content overflow */
     }
 
     /* Mobile ToC Toggle Button */
@@ -400,10 +425,12 @@
       .toc {
         width: 60px;
         left: 1rem;
+        overflow-y: hidden; /* No scrolling when collapsed on tablet */
       }
 
       .toc:hover {
         width: 280px;
+        overflow-y: auto; /* Restore scrolling on hover */
       }
 
       .toc-title,
@@ -472,6 +499,14 @@
 
       h1 {
         font-size: 2rem;
+      }
+
+      .h1-title {
+        font-size: 2rem;
+      }
+
+      .h1-subtitle {
+        font-size: 1rem;
       }
 
       h2 {
@@ -621,7 +656,7 @@
 
     <main id="main-content">
       <div class="header">
-      <h1>First 90 Days: Building Scalable Support at FieldStack</h1>
+      <h1><span class="h1-title">First 90 Days</span><span class="h1-subtitle">Building Scalable Support at FieldStack</span></h1>
       <div class="subtitle">A Modular, Team-Centered Approach</div>
       <div class="meta-info">
         <span>Prepared for: <strong>FieldStack Support Manager Role</strong></span>
