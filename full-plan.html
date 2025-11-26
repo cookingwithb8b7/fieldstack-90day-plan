@@ -35,8 +35,7 @@
 
     .container {
       max-width: 1000px;
-      margin: 0 auto;
-      margin-left: 320px; /* ToC width (280px) + gap (40px) */
+      margin: 0 auto; /* Center the content */
       background: var(--bg-secondary);
       border-radius: 12px;
       padding: 3rem;
@@ -279,7 +278,7 @@
     /* Table of Contents Styles */
     .toc {
       position: fixed;
-      left: max(1rem, calc(50% - 820px)); /* Align with content: 50% - (container 1000px + ToC 280px + gap 40px) / 2 */
+      left: max(1rem, calc(50% - 500px - 40px - 280px)); /* Position to left of centered content, with minimum 1rem from edge */
       top: 0;
       bottom: 0;
       width: 280px;
@@ -1435,17 +1434,19 @@
       // Scroll spy: Highlight active section
       function updateActiveLink() {
         let currentSection = '';
-        const scrollPosition = window.scrollY + 100; // Offset for better UX
+        const scrollPosition = window.scrollY + 150; // Offset for better UX
 
+        // Find the section that's currently in view
+        // We want the last section whose top is above the scroll position
         sections.forEach(section => {
           const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
 
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          if (scrollPosition >= sectionTop) {
             currentSection = section.getAttribute('id');
           }
         });
 
+        // Update active states
         tocLinks.forEach(link => {
           link.classList.remove('active');
           if (link.getAttribute('href') === '#' + currentSection) {
