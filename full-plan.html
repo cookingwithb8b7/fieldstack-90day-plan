@@ -36,6 +36,7 @@
     .container {
       max-width: 1000px;
       margin: 0 auto;
+      margin-left: 320px; /* ToC width (280px) + gap (40px) */
       background: var(--bg-secondary);
       border-radius: 12px;
       padding: 3rem;
@@ -278,7 +279,7 @@
     /* Table of Contents Styles */
     .toc {
       position: fixed;
-      left: 1rem;
+      left: max(1rem, calc(50% - 820px)); /* Align with content: 50% - (container 1000px + ToC 280px + gap 40px) / 2 */
       top: 0;
       bottom: 0;
       width: 280px;
@@ -381,6 +382,12 @@
       pointer-events: none;
     }
 
+    .toc.collapsed .toc-toggle {
+      /* Keep toggle button visible and clickable */
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     .toc.collapsed .toc-toggle span {
       transform: rotate(180deg);
     }
@@ -420,11 +427,22 @@
       transform: scale(1.05);
     }
 
+    /* Tablet: Reset ToC to left edge */
+    @media (max-width: 1400px) {
+      .toc {
+        left: 1rem;
+      }
+
+      .container {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Tablet: Auto-collapse ToC, expand on hover */
     @media (max-width: 1024px) {
       .toc {
         width: 60px;
-        left: 1rem;
         overflow-y: hidden; /* No scrolling when collapsed on tablet */
       }
 
@@ -495,6 +513,8 @@
 
       .container {
         padding: 1.5rem;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       h1 {
@@ -531,6 +551,7 @@
         background: white;
         max-width: 100%;
         padding: 2rem;
+        margin-left: 0 !important;
       }
 
       h1, h2 {
