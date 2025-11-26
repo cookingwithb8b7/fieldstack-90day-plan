@@ -20,8 +20,8 @@
       --accent-secondary: #0891b2;
       --accent-hover: #06b6d4;
       --text-primary: #e8eaed;
-      --text-secondary: #a8a4b8;
-      --text-muted: #9e9aac;
+      --text-secondary: #c0bcd0; /* Lightened from #a8a4b8 for WCAG AA contrast */
+      --text-muted: #b6b2c4; /* Lightened from #9e9aac for WCAG AA contrast */
       --border-color: #2a2f45;
     }
 
@@ -227,6 +227,37 @@
       line-height: 1.5;
     }
 
+    /* Skip Link for Keyboard Accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      z-index: 100;
+      border-radius: 0 0 4px 0;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Enhanced Focus Indicators */
+    *:focus-visible {
+      outline: 3px solid var(--accent-primary);
+      outline-offset: 2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent-primary);
+      outline-offset: 2px;
+      background: rgba(20, 184, 166, 0.15);
+    }
+
     @media (max-width: 768px) {
       .container {
         padding: 1.5rem;
@@ -276,20 +307,44 @@
       .nav {
         display: none;
       }
+
+      /* Show URLs after links for print */
+      a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+      }
+
+      /* Don't show URLs for fragment links */
+      a[href^="#"]:after {
+        content: "";
+      }
+
+      /* Page break considerations */
+      h1, h2, h3 {
+        page-break-after: avoid;
+      }
+
+      .section {
+        page-break-inside: avoid;
+      }
     }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="container">
-    <nav class="nav">
+    <nav class="nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Executive Summary</a></li>
-        <li><a href="full-plan.html" class="active">Full 90-Day Plan</a></li>
+        <li><a href="full-plan.html" class="active" aria-current="page">Full 90-Day Plan</a></li>
         <li><a href="appendix-a.html">Appendix A: Data Strategy</a></li>
       </ul>
     </nav>
 
-    <div class="header">
+    <main id="main-content">
+      <div class="header">
       <h1>First 90 Days: Building Scalable Support at FieldStack</h1>
       <div class="subtitle">A Modular, Team-Centered Approach</div>
       <div class="meta-info">
@@ -1034,12 +1089,13 @@
 
       <p>That's how you build something that scales.</p>
     </div>
+    </main>
 
     <div class="footer">
-      <nav class="nav">
+      <nav class="nav" aria-label="Footer navigation">
         <ul>
           <li><a href="index.html">Executive Summary</a></li>
-          <li><a href="full-plan.html" class="active">Full 90-Day Plan</a></li>
+          <li><a href="full-plan.html" class="active" aria-current="page">Full 90-Day Plan</a></li>
           <li><a href="appendix-a.html">Appendix A: Data Strategy</a></li>
         </ul>
       </nav>
