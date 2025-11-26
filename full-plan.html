@@ -1433,22 +1433,11 @@
       const tocLinks = document.querySelectorAll('.toc-link');
       const sections = document.querySelectorAll('h2[id]');
 
-      // Load saved ToC state from localStorage
-      const savedCollapsedState = localStorage.getItem('toc-collapsed');
-      if (savedCollapsedState === 'true' && window.innerWidth >= 1025) {
-        toc.classList.add('collapsed');
-        tocToggle.setAttribute('aria-expanded', 'false');
-        tocToggle.setAttribute('aria-label', 'Expand table of contents');
-      }
-
       // Desktop Toggle: Collapse/Expand
       tocToggle.addEventListener('click', function() {
         const isCollapsed = toc.classList.toggle('collapsed');
         tocToggle.setAttribute('aria-expanded', !isCollapsed);
         tocToggle.setAttribute('aria-label', isCollapsed ? 'Expand table of contents' : 'Collapse table of contents');
-
-        // Save state to localStorage
-        localStorage.setItem('toc-collapsed', isCollapsed);
       });
 
       // Mobile Toggle: Open/Close overlay
@@ -1544,14 +1533,8 @@
             document.body.style.overflow = '';
           }
 
-          // Restore collapsed state on desktop, remove on tablet/mobile
-          if (window.innerWidth >= 1025) {
-            const savedState = localStorage.getItem('toc-collapsed');
-            if (savedState === 'true') {
-              toc.classList.add('collapsed');
-              tocToggle.setAttribute('aria-expanded', 'false');
-            }
-          } else {
+          // Remove collapsed state on tablet/mobile
+          if (window.innerWidth < 1025) {
             toc.classList.remove('collapsed');
           }
         }, 250);
