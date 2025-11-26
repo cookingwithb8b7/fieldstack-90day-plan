@@ -1,0 +1,34 @@
+# SSH keys (CRITICAL - never commit these)
+*.pem
+*.key
+id_*
+id_ed*
+*.pub
+ssh
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Old versions
+v1/
+
+# VS Code
+.vscode/
+.vscode-test/
+
+# Node modules (if added later)
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Windows
+$RECYCLE.BIN/
+*.lnk
+
+# Mac
+.AppleDouble
+.LSOverride
