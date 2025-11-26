@@ -316,9 +316,7 @@
     }
 
     .toc-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      display: block;
       padding: 0.75rem 1.5rem;
       color: var(--text-secondary);
       text-decoration: none;
@@ -335,13 +333,6 @@
       background: rgba(20, 184, 166, 0.15);
       color: var(--accent-primary);
       border-left-color: var(--accent-primary);
-    }
-
-    .toc-number {
-      font-weight: 700;
-      color: var(--accent-primary);
-      min-width: 24px;
-      transition: opacity 0.3s ease;
     }
 
     .toc-text {
@@ -416,12 +407,12 @@
       }
 
       .toc-link {
-        justify-content: center;
+        text-align: center;
         padding: 0.75rem 0;
       }
 
       .toc:hover .toc-link {
-        justify-content: flex-start;
+        text-align: left;
         padding: 0.75rem 1.5rem;
       }
     }
@@ -549,7 +540,7 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Table of Contents -->
@@ -560,45 +551,41 @@
 
     <nav id="toc-nav" class="toc-nav">
       <ul class="toc-list">
+        <li><a href="#top" class="toc-link">
+          <span class="toc-text">↑ Top</span>
+        </a></li>
         <li><a href="#executive-summary" class="toc-link">
-          <span class="toc-number">1</span>
           <span class="toc-text">Executive Summary</span>
         </a></li>
         <li><a href="#guiding-principles" class="toc-link">
-          <span class="toc-number">2</span>
           <span class="toc-text">Guiding Principles</span>
         </a></li>
         <li><a href="#module-1" class="toc-link">
-          <span class="toc-number">3</span>
           <span class="toc-text">Module 1: Trust Building</span>
         </a></li>
         <li><a href="#module-2" class="toc-link">
-          <span class="toc-number">4</span>
           <span class="toc-text">Module 2: Quick Wins</span>
         </a></li>
         <li><a href="#module-3" class="toc-link">
-          <span class="toc-number">5</span>
           <span class="toc-text">Module 3: Documentation</span>
         </a></li>
         <li><a href="#module-4" class="toc-link">
-          <span class="toc-number">6</span>
           <span class="toc-text">Module 4: Metrics & Data</span>
         </a></li>
         <li><a href="#module-5" class="toc-link">
-          <span class="toc-number">7</span>
           <span class="toc-text">Module 5: Scaling Prep</span>
         </a></li>
         <li><a href="#module-6" class="toc-link">
-          <span class="toc-number">8</span>
           <span class="toc-text">Module 6: Strategic Positioning</span>
         </a></li>
         <li><a href="#success-indicators" class="toc-link">
-          <span class="toc-number">9</span>
           <span class="toc-text">Success Indicators</span>
         </a></li>
         <li><a href="#conclusion" class="toc-link">
-          <span class="toc-number">10</span>
           <span class="toc-text">Closing Thoughts</span>
+        </a></li>
+        <li><a href="#bottom" class="toc-link">
+          <span class="toc-text">↓ Bottom</span>
         </a></li>
       </ul>
     </nav>
@@ -1497,5 +1484,6 @@
       updateActiveLink();
     })();
   </script>
+  <div id="bottom"></div>
 </body>
 </html>
