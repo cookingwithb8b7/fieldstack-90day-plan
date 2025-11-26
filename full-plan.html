@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First 90 Days: Building Scalable Support at FieldStack</title>
+  <meta name="description" content="Strategic plan for building scalable support operations">
+  <meta name="author" content="Brandon Barlow">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-secondary: #1a1f35;
+      --bg-tertiary: #1e1b2e;
+      --accent-primary: #14b8a6;
+      --accent-secondary: #0891b2;
+      --accent-hover: #06b6d4;
+      --text-primary: #e8eaed;
+      --text-secondary: #a8a4b8;
+      --text-muted: #9e9aac;
+      --border-color: #2a2f45;
+    }
+    
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav {
+      background: var(--bg-tertiary);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+    
+    .nav li {
+      margin: 0;
+    }
+    
+    .nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+      padding: 0.5rem 1rem;
+      display: block;
+      border-radius: 4px;
+    }
+    
+    .nav a:hover {
+      color: var(--accent-primary);
+      background: rgba(20, 184, 166, 0.1);
+    }
+    
+    .nav a.active {
+      color: var(--accent-primary);
+    }
+    
+    .content {
+      margin-top: 2rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      font-weight: 700;
+      margin-top: 2rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      color: var(--accent-primary);
+      margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
+      font-weight: 700;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+      font-weight: 600;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+    
+    ul {
+      list-style-position: outside;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+    
+    strong {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+    
+    em {
+      font-style: italic;
+      color: var(--text-primary);
+    }
+    
+    hr {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media print {
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+      }
+      
+      .container {
+        box-shadow: none;
+        background: white;
+        max-width: 100%;
+        padding: 2rem;
+      }
+      
+      h1, h2 {
+        color: black;
+      }
+      
+      .nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav"><ul><li><a href="index.html">Executive Summary</a></li><li><a href="full-plan.html" class="active">Full 90-Day Plan</a></li><li><a href="appendix-a.html">Appendix A: Data Strategy</a></li></ul></nav>
+    <div class="content">
+      <h1>First 90 Days: Building Scalable Support at FieldStack</h1>
+<h2>A Modular, Team-Centered Approach</h2>
+<br>
+<strong>Prepared for:</strong> FieldStack Support Manager Role
+<strong>Date:</strong> November 20, 2025
+<strong>Author:</strong> Brandon Barlow
+<br>
+---
+<br>
+<h2>Executive Summary</h2>
+<br>
+<p>This document outlines a modular approach to building scalable support operations at FieldStack. Rather than a rigid timeline, it presents process components that can be implemented in whatever order makes sense based on actual conditions on the ground.</p>
+<br>
+<strong>Core Philosophy:</strong><ul>
+<li>Build trust before implementing change</li><li>Make the team the authors of their own success</li><li>Systems that empower, not control</li><li>Foundation before sophistication</li>
+<br>
+<strong>Key Outcomes (90 Days):</strong>
+<li>Support team trusts leadership and feels empowered</li><li>Core processes documented and operational</li><li>Metrics provide meaningful insights</li><li>Team positioned for growth (enterprise clients, scaling)</li><li>Support recognized as strategic function, not just cost center</li>
+<br>
+---
+<br>
+<h2>Guiding Principles</h2>
+<br>
+<h3>1. Modular Implementation</h3>
+<p>These aren't sequential steps - they're building blocks. Some may happen in week 1, some in week 12. The goal is flexibility based on actual team needs and business priorities.</p>
+<br>
+<h3>2. Team-Centered Development</h3>
+<p>Every team member begins leadership development on day 1. As the team scales, internal promotions > external hires. The original 7 analysts should become senior analysts, team leads, or specialists within 2 years.</p>
+<br>
+<h3>3. Empowerment Over Control</h3>
+<p>My job is removing obstacles, not approving everything. Build systems that enable independent decision-making, not approval theater.</p>
+<br>
+<h3>4. Strategic Positioning</h3>
+<p>Support is a competitive advantage for FieldStack - customers specifically praise support quality. This isn't a cost center to optimize away; it's a differentiator to leverage.</p>
+<br>
+---
+<br>
+<h2>MODULE 1: Trust Building Activities</h2>
+<em>Can happen: Anytime, but critical in first 30 days</em>
+<br>
+<h3>Individual 1-on-1s: Understanding Management Preferences</h3>
+<strong>Approach:</strong> Ask each team member:
+<li>How do you like to be managed? (Visual learner? Hands-off? Detail-oriented?)</li><li>Is your current preference working for you or is it a hindrance?</li><li>What would make your job easier?</li>
+<br>
+<strong>Purpose:</strong>
+<li>Learn how each person works best</li><li>Begin positioning them as future leaders (when team scales, need leads from within)</li><li>Identify who has leadership potential vs. who wants to stay technical</li>
+<br>
+<strong>Output:</strong> Individual relationships, understanding of team dynamics, development baseline
+<br>
+---
+<br>
+<h3>Workflow Documentation Exercise</h3>
+<strong>Approach:</strong> Ask each analyst to document their current workflow:
+<li>How do you handle a ticket from start to finish?</li><li>What works for you? What works against you? Why?</li><li>Where do you get stuck or frustrated?</li>
+<br>
+<strong>Purpose:</strong>
+<li>Extract existing tribal knowledge before it's lost</li><li>Map overlaps across individual approaches to find common ground</li><li>Build standardized baseline FROM their processes, not imposing external system</li><li>Create buy-in through participation (can't argue with their own documented processes)</li>
+<br>
+<strong>Output:</strong> Workflow documentation that becomes foundation for standardization
+<br>
+---
+<br>
+<h3>Shadow & Learn</h3>
+<li>Spend time with each agent observing their work</li><li>Take genuine notes, ask questions, learn the product</li><li>Shows respect: "You know this better than I do - teach me"</li>
+<br>
+<strong>Output:</strong> Understanding of current workflows, pain points, tribal knowledge
+<br>
+---
+<br>
+<h3>Go Through New Employee Training</h3>
+<li>Experience what new agents experience</li><li>Identify gaps, outdated info, unclear processes</li><li>Demonstrates humility and willingness to start from baseline</li>
+<br>
+<strong>Output:</strong> Baseline product understanding + training improvement opportunities
+<br>
+---
+<br>
+<h3>Attend Client Calls / Review Tickets</h3>
+<li>See customer perspective firsthand</li><li>Understand common issues, tone, expectations</li>
+<br>
+<strong>Output:</strong> Customer empathy, issue pattern recognition
+<br>
+---
+<br>
+<h2>MODULE 2: Quick Win Opportunities</h2>
+<em>Can happen: As soon as identified, ideally within first 60 days</em>
+<br>
+<h3>Fix Obvious Broken Processes</h3>
+<li>Things everyone complains about but "that's just how we do it"</li><li>Low-effort, high-impact changes</li><li>Demonstrates execution capability and builds immediate credibility</li>
+<br>
+<strong>Output:</strong> Team trust, proof of follow-through
+<br>
+---
+<br>
+<h3>Establish Clear Escalation Paths</h3>
+<strong>Current state:</strong> No formal escalation path; customers prefer specific analysts
+<br>
+<strong>The problem:</strong>
+<li>Support analysts maintaining personal client relationships (that's Account Management's job)</li><li>No coverage when expert analyst is unavailable</li><li>Clients treating analysts as "their person" creates dependency and burnout</li>
+<br>
+<strong>The fix:</strong>
+<li><strong>Build routing based on issue type, not customer preference</strong></li><li>Establish coverage matrix (if Expert 1 is out, Expert 2 covers)</li><li>Define decision tree: When to handle independently vs. escalate</li>
+<br>
+<strong>Re-education needed:</strong>
+<li><strong>Customers:</strong> Your support contact is the TEAM, not Bob specifically</li><li><strong>Analysts:</strong> Your job is solving problems, not maintaining relationships (that's Account Management's role)</li><li><strong>Account Management:</strong> You own client relationships, Support owns problem resolution</li>
+<br>
+<strong>Why this matters:</strong> Prevents customer dependency on individual analysts, enables vacation/coverage, reduces burnout
+<br>
+<strong>Output:</strong> Clear escalation procedures, reduced bottlenecks, agent empowerment
+<br>
+---
+<br>
+<h3>Rotating Responsibility: Ticket Coordinator (Weekly)</h3>
+<strong>Purpose:</strong> Give everyone exposure to triage and routing decisions
+<br>
+<strong>Responsibilities:</strong>
+<li>Review incoming tickets</li><li>Assign based on expertise + workload balance</li><li>Decide Tier 1 (analyst handles) vs. Tier 2 (needs coordination/escalation)</li><li>Monitor for tickets falling through cracks</li><li>Report patterns at weekly team meeting</li>
+<br>
+<strong>Rotation mechanics:</strong>
+<li>Ask for volunteer for first rotation (sets standard)</li><li>Then alphabetical order ongoing</li><li>Rotation is mandatory part of role</li><li>Remains consistent until team size necessitates evolution</li>
+<br>
+<strong>Why rotation works:</strong>
+<li>Prevents "that's not my job" mentality</li><li>Builds empathy ("coordinating tickets is harder than I thought")</li><li>Everyone shares accountability for team outcomes</li><li>Surfaces who's good at what (and who wants to avoid what)</li>
+<br>
+<strong>Output:</strong> Distributed ownership, skill development, identification of future specialists
+<br>
+---
+<br>
+<h3>Weekly Team Meeting Cadence</h3>
+<li>Communication and pattern-sharing, not status reports</li><li>Share wins, discuss trends, surface blockers</li><li>Team-owned time for collaboration</li>
+<br>
+<strong>Output:</strong> Team cohesion, shared awareness, proactive problem-solving
+<br>
+---
+<br>
+<h3>Support Matrix as Marketing Asset</h3>
+<strong>Opportunity:</strong> Position support as competitive differentiator
+<br>
+<strong>Customer-facing support matrix:</strong>
+<li>What we support</li><li>Response time standards</li><li>Expertise areas</li><li>How to get help effectively</li>
+<br>
+<strong>Why this matters:</strong>
+<li><strong>Sales tool:</strong> "Look how organized our support is"</li><li><strong>Customer expectation management:</strong> Clear standards prevent surprises</li><li><strong>Competitive differentiator:</strong> "Other platforms have terrible support - here's proof ours is world-class"</li>
+<br>
+<strong>Support becomes revenue driver:</strong> When sales can point to support quality as reason to buy, support stops being cost center and becomes strategic asset.
+<br>
+<strong>Collaborate with:</strong> Marketing to position this as sales/retention tool
+<br>
+<strong>Output:</strong> Support visibility, competitive positioning, clear customer expectations
+<br>
+---
+<br>
+<h2>MODULE 3: Foundation Building - Documentation</h2>
+<em>Can happen: After trust is built, can span 30-90 days</em>
+<br>
+<h3>Process Documentation (SOPs)</h3>
+<li>How we handle common scenarios</li><li>Written BY the agents who do the work</li><li>Captures team expertise for scaling</li>
+<br>
+<strong>Output:</strong> Onboarding resource, consistency tool, scaling foundation
+<br>
+---
+<br>
+<h3>Knowledge Base - Internal</h3>
+<li>Troubleshooting guides and product quirks</li><li>Preserves collective team knowledge</li>
+<br>
+<strong>Output:</strong> Faster training, reduced tribal knowledge dependency
+<br>
+---
+<br>
+<h3>Rotating Responsibility: Knowledge Base Curator (Weekly or Bi-Weekly)</h3>
+<strong>Purpose:</strong> Give everyone exposure to documentation and knowledge management
+<br>
+<strong>Responsibilities:</strong>
+<li>Review KB articles for accuracy</li><li>Identify gaps (what questions come up that aren't documented?)</li><li>Work with analysts to create new articles</li><li>Archive outdated content</li><li>Report on KB usage and effectiveness</li>
+<br>
+<strong>Why this rotation with Ticket Coordinator:</strong>
+<li><strong>Tickets = reactive work</strong> (handling what comes in)</li><li><strong>KB = proactive work</strong> (preventing tickets from happening)</li><li>Together they define support operations: respond well + reduce volume</li>
+<br>
+<strong>Output:</strong> Living documentation, distributed ownership of knowledge management
+<br>
+---
+<br>
+<h3>Knowledge Base - Customer Facing</h3>
+<li>Self-service for common issues</li><li>Reduces inbound ticket volume</li><li>Answers common questions once, scales infinitely</li>
+<br>
+<strong>Output:</strong> Volume reduction, better customer experience, analysts freed for complex work
+<br>
+---
+<br>
+<h3>Review Existing Instructional Assets</h3>
+<strong>Context:</strong> Sales rep previously created instructional videos for clients
+<br>
+<strong>Questions to answer:</strong>
+<li>Are they useful for support purposes?</li><li>Are they sales-focused or support-focused?</li><li>Too technical? Too basic? Outdated?</li><li>Can they be repurposed for KB or should we start fresh?</li>
+<br>
+<strong>Cultural note:</strong> FieldStack doesn't upsell - new features are free to existing clients. Support content should reflect this partnership approach.
+<br>
+<strong>Output:</strong> Understanding of existing assets, plan for reuse or retirement
+<br>
+---
+<br>
+<h3>Ticket Categorization System</h3>
+<li>Standardized tagging for issue types</li><li>Enables pattern recognition and data analysis</li><li>Foundation for meaningful metrics</li>
+<br>
+<strong>Output:</strong> Data foundation for metrics
+<br>
+---
+<br>
+<h2>MODULE 4: Foundation Building - Metrics & Data</h2>
+<em>Can happen: After documentation is underway, 60-90 days</em>
+<br>
+<h3>Ticket Lifecycle Clarity</h3>
+<strong>Current state assessment needed:</strong>
+<li>What ticket statuses exist now?</li><li>How do analysts currently track progress?</li><li>What closure process exists (if any)?</li><li>Where are the pain points?</li>
+<br>
+<strong>Goal: Define clear ticket lifecycle</strong>
+<li>Statuses: New, In Progress, Pending Client, Resolved, Closed</li><li>Closure reasons: Resolved, No Response, Duplicate, Out of Scope, etc.</li><li>Automated reminders: If pending client >7 days, nudge them</li><li>Clear ownership: Who's responsible for next action at each stage</li>
+<br>
+<strong>Why this matters:</strong>
+<li>Can't have meaningful metrics without clean data</li><li>"Old ticket" problem solves itself with proper lifecycle tracking</li><li>Pattern analysis requires consistent categorization</li>
+<br>
+<strong>Output:</strong> Clean data foundation, proper ticket hygiene
+<br>
+---
+<br>
+<h3>Address Duplicate Ticket Problem</h3>
+<strong>Current issue:</strong> Large clients submit 5 tickets from 5 people about same issue
+<br>
+<strong>Technical fix:</strong>
+<li>Tagging system flags potential duplicates</li><li>Parent/child ticket relationships (5 child tickets → 1 parent issue)</li><li>Dashboard showing active issues (visibility: is someone already working this?)</li>
+<br>
+<strong>Client education fix:</strong>
+<br>
+<strong>For NEW clients (during onboarding):</strong>
+<li>"Here's how to submit tickets effectively"</li><li>"Designate a support coordinator who checks with team first"</li><li>Build into sales/onboarding process</li>
+<br>
+<strong>For EXISTING clients (gentle transition):</strong>
+<li>"We're evolving our support process to serve you better"</li><li>"To improve response times, please designate a support point person"</li><li>Frame as UPGRADE, not restriction</li>
+<br>
+<strong>Why this matters:</strong> Prevents wasted analyst time, improves response efficiency, manages client expectations
+<br>
+<strong>Output:</strong> Deduplication system, client education process
+<br>
+---
+<br>
+<h3>Define Metrics That Matter</h3>
+<p>Not just "tickets closed" - metrics that help the TEAM, not just management reporting</p>
+<br>
+<strong>Core operational metrics:</strong>
+<li>Response time (how fast do we acknowledge?)</li><li>Resolution time (how long to actually solve?)</li><li>First contact resolution rate (solved without escalation?)</li><li>CSAT/NPS (what do clients think?)</li><li>Escalation rate (how often do we need help?)</li><li>Ticket volume trends (what's driving demand?)</li>
+<br>
+<strong>Strategic metrics:</strong>
+<li>Top 10 ticket drivers (where's the pain?)</li><li>Time-to-competency for new hires (how fast can we onboard?)</li><li>Agent utilization (balanced workload or burnout risk?)</li>
+<br>
+<strong>Key positioning:</strong> "These metrics help US work smarter, not micromanagement surveillance"
+<br>
+<strong>Output:</strong> Shared understanding of success
+<br>
+---
+<br>
+<h3>Simple Metrics Dashboard</h3>
+<li>Make performance visible to team</li><li>Focus on trends and patterns, not just daily numbers</li><li>Demonstrates team impact and enables data-driven decisions</li>
+<br>
+<strong>Output:</strong> Transparency, informed decision-making
+<br>
+---
+<br>
+<h3>Identify Top 10 Ticket Drivers</h3>
+<li>What's causing the most volume?</li><li>Which can be prevented vs. just handled better?</li><li>Work smarter through root cause analysis</li>
+<br>
+<strong>Output:</strong> Root cause insights, product feedback for engineering
+<br>
+---
+<br>
+<h3>Proactive Client Communication for Large Accounts</h3>
+<strong>Context:</strong> JR mentioned that a large client audits still-open tickets at year-end to evaluate support value
+<br>
+<strong>Challenge:</strong>
+<li>Reactive year-end review creates fire drill</li><li>No ongoing visibility into ticket status throughout year</li><li>Support appears reactive rather than proactive</li>
+<br>
+<strong>Solution: Proactive Monthly Reporting</strong>
+<li>Monthly summary: "Here's what we resolved, here's what's still open and why"</li><li>Clear ticket status definitions: "Open" vs "Pending your response" vs "Monitoring"</li><li>Regular check-ins prevent year-end surprises</li>
+<br>
+<strong>Strategic benefit:</strong>
+<li>Transforms support from reactive to proactive partner</li><li>Demonstrates ongoing value throughout year, not just at audit time</li><li>Positions support as strategic resource, not just ticket handler</li><li>Use as model for other enterprise client relationships</li>
+<br>
+<strong>Output:</strong> Proactive client communication framework, improved enterprise client relationships
+<br>
+---
+<br>
+<h3>Data Access & Governance (Future Consideration)</h3>
+<br>
+<p>SQL and database work came up multiple times in interviews. Once foundational support processes are solid (ticket lifecycle, metrics, documentation), exploring support's access to customer data becomes a strategic opportunity.</p>
+<br>
+<p>Questions to address:</p>
+<li>What customer data does support need vs. what creates liability?</li><li>How do we protect the support team if broader governance frameworks are unclear?</li><li>What department-level controls can support implement?</li>
+<br>
+<p>This is a post-90-day project that warrants its own strategic planning. <strong><em>See Appendix A: Data Access & Support Team Liability (available upon request).</strong></em></p>
+<br>
+---
+<br>
+<h2>MODULE 5: Scaling Preparation</h2>
+<em>Can happen: 60-90 days, after foundation is solid</em>
+<br>
+<h3>Training Infrastructure (Not Training Department... Yet)</h3>
+<strong>The unsaid foundation:</strong> Building toward a training function they don't know they need yet
+<br>
+<strong>Phase 1 (Now - 10 employees):</strong>
+<li>Knowledge base = self-service training</li><li>Analysts contribute content asynchronously</li><li>No expectation that analysts "also do training"</li>
+<br>
+<strong>Phase 2 (10-20 employees):</strong>
+<li>Training modules + shadowing program</li><li>Identify "Training Analysts" through voluntary interest</li><li>Senior analysts mentor new hires (paid, recognized responsibility)</li><li>Dashboard data becomes training metrics</li>
+<br>
+<strong>Phase 3 (20+ employees):</strong>
+<li>Dedicated training role/department</li><li>Built on foundation of documented processes, modules, metrics</li><li>Analysts freed up to do actual support work</li>
+<br>
+<strong>Why this approach:</strong>
+<li>You're not asking current analysts to "also train" (that's bullshit and they'd resent it)</li><li>Building infrastructure NOW that becomes training department LATER</li><li>When growth demands it, foundation already exists</li>
+<br>
+<strong>The sell to team:</strong>
+<p>"We're capturing your expertise now so when we grow, you're not constantly training every new person. You do it once, we systematize it, future-you thanks current-you."</p>
+<br>
+---
+<br>
+<h3>Training Analyst Role (Phase 2)</h3>
+<strong>When team hits 10-15 people:</strong>
+<br>
+<strong>The ask:</strong>
+<p>"As we grow, we need people who can mentor new hires. This comes with more responsibility - training coordination, shadowing, documentation work. It also comes with recognition and compensation adjustment. Who's interested?"</p>
+<br>
+<strong>What this does:</strong>
+<li>Self-selection = 100% buy-in</li><li>Frames as opportunity, not promotion</li><li>Transparency about scope and compensation</li>
+<br>
+<strong>Titles that aren't hierarchical bullshit:</strong>
+<li>"Training Analyst" (you train analysts)</li><li>"Lead Analyst" (you lead initiatives, not people)</li><li>"Specialist" (you specialize in X domain)</li>
+<br>
+<strong>Avoid:</strong> "Senior," "Manager," "Supervisor" (all imply hierarchy)
+<br>
+<strong>Why tell them once:</strong>
+<p>"We're building training infrastructure because we're growing. I need people who can help new hires ramp fast so YOU aren't constantly interrupted. This role makes your job easier long-term."</p>
+<br>
+<p>If they argue with the why, that's fine. They don't have to take the role. But we're not re-litigating the decision.</p>
+<br>
+<strong>Output:</strong> Voluntary training analysts, clear expectations, scalable onboarding
+<br>
+---
+<br>
+<h3>Enterprise Client Support Playbook</h3>
+<strong>Context:</strong> Two large retail clients coming on, business expected to double
+<br>
+<strong>Different expectations for enterprise:</strong>
+<li>Faster response times?</li><li>Dedicated support contact?</li><li>Proactive check-ins?</li><li>Custom reporting?</li>
+<br>
+<strong>Build playbook collaboratively:</strong>
+<li>What does "enterprise-level service" mean for FieldStack?</li><li>How is it different from current SMB support model?</li><li>What resources/training do analysts need?</li>
+<br>
+<strong>Approach:</strong> Collaborative development with team input
+<br>
+<strong>Output:</strong> Clear enterprise support standards, team prepared for scale
+<br>
+---
+<br>
+<h3>Hiring Plan (If Capacity Gaps Exist)</h3>
+<li>Where are the bottlenecks? Volume? Expertise? Coverage?</li><li>What skills do we actually need?</li><li>Hire strategically for specific gaps</li>
+<br>
+<strong>Output:</strong> Right-sized team for growth trajectory
+<br>
+<strong>Output:</strong> Right-sized team for growth trajectory
+<br>
+---
+<br>
+<h2>MODULE 6: Strategic Positioning</h2>
+<em>Can happen: Ongoing, especially 60-90 days</em>
+<br>
+<h3>Regular Sync with Account Management</h3>
+<strong>Purpose:</strong> Position support as early warning system
+<br>
+<strong>What support sees that Account Management doesn't:</strong>
+<li>Ticket volume spikes (churn risk indicator)</li><li>Recurring issues (product/training gaps)</li><li>Customer frustration patterns</li>
+<br>
+<strong>The conversation:</strong>
+<p>"Support isn't just reactive ticket handling - we're your early warning system for account health. When a client's ticket volume spikes 3x, that's a retention risk. Let's build feedback loop."</p>
+<br>
+<strong>Output:</strong> Support as strategic partner in retention, not just cost center
+<br>
+---
+<br>
+<h3>Product Feedback Loop</h3>
+<strong>Current state:</strong> Support handles issues as they come
+<br>
+<strong>Future state:</strong> Support aggregates patterns and informs product roadmap
+<br>
+<strong>Approach:</strong>
+<li>Don't forward every bug immediately (engineers need signal, not noise)</li><li>Track patterns over 1-2 weeks</li><li>Quantify impact: How many tickets? What client segments?</li><li>Prioritize ruthlessly: Top 3-5 issues quarterly, not 50</li><li>Provide context: What's the use case? Why does current behavior fail?</li>
+<br>
+<strong>Why this works:</strong> Engineering becomes ally because you make their lives easier with quality, prioritized input
+<br>
+<strong>Output:</strong> Product improvements, reduced future support volume
+<br>
+---
+<br>
+<h3>Clear Escalation Framework & Customer Boundaries</h3>
+<strong>Observation from interviews:</strong> Current escalation paths appear informal, which can lead to inconsistent customer experiences
+<br>
+<strong>Framework for structured escalations:</strong>
+<br>
+<strong>Tier 1: Standard Support Issues</strong>
+<li>Analysts handle independently</li><li>Clear resolution paths</li><li>Measured by response/resolution time</li>
+<br>
+<strong>Tier 2: Complex Technical Issues</strong>
+<li>Involves engineering/product coordination</li><li><strong>Ticket Coordinator decides</strong> (using documented decision tree)</li><li>Analysts coordinate, engineering resolves</li><li>Measured by collaboration effectiveness</li>
+<br>
+<strong>Tier 3: Client Relationship Issues</strong>
+<li>Account Management owns</li><li>Support provides context and technical details</li><li>Account Management handles relationship dynamics</li><li>Strategic escalation for business-level concerns</li>
+<br>
+<strong>Implementation approach:</strong>
+<p>"We're establishing clearer escalation paths so everyone knows who handles what. This gets customers to the right resource faster and prevents issues from bouncing between teams."</p>
+<br>
+<strong>Benefits:</strong>
+<li>Customers reach right person for their issue type</li><li>Account Management handles strategic relationship matters</li><li>Analysts focus on technical problem-solving</li><li>Sustainable workload distribution</li>
+<br>
+<strong>Frame as service improvement:</strong> Better response times, appropriate expertise, clearer communication
+<br>
+<strong>Output:</strong> Structured escalation framework, sustainable team boundaries, improved customer routing
+<br>
+---
+<br>
+<h3>Cross-Functional Communication Standards</h3>
+<strong>Context:</strong> Inconsistent branding/communication across touchpoints may create customer confusion
+<br>
+<strong>Questions to explore:</strong>
+<li>Does inconsistent email formatting cause support issues?</li><li>Do customers get confused by different communication styles?</li><li>Is this creating extra tickets or escalations?</li>
+<br>
+<strong>If yes:</strong>
+<li>Collaborate with Marketing on unified customer communication templates</li><li>This is about expectation management, not aesthetics</li><li><strong>Support's lane:</strong> How do we work with other orgs to create consistent customer experience?</li><li><strong>Not support's lane:</strong> Company-wide brand guidelines (that's Marketing's problem)</li>
+<br>
+<strong>Output:</strong> Reduced customer confusion, unified communication standards (if needed)
+<br>
+---
+<br>
+<h2>Success Indicators</h2>
+<br>
+<h3>30 Days</h3>
+<li>Team trusts you're not here to blow everything up</li><li>You understand the product and customer base</li><li>1-2 quick wins shipped (obvious broken processes fixed)</li><li>Workflow documentation underway</li>
+<br>
+<h3>60 Days</h3>
+<li>Documentation progressing (team is contributing, not just you writing)</li><li>Clear escalation paths established</li><li>Rotating responsibilities launched (Ticket Coordinator, KB Curator)</li><li>Basic metrics dashboard live</li><li>Team positioned as experts, not just executors</li>
+<br>
+<h3>90 Days</h3>
+<li>Support operations documented and measurable</li><li>Ticket lifecycle clarity established</li><li>Training infrastructure foundation built (ready for growth)</li><li>Support recognized as strategic function (Account Mgmt partner, Product feedback source)</li><li>Team empowered and developed (everyone growing, not just "high performers")</li>
+<br>
+---
+<br>
+<h2>What This Actually Builds</h2>
+<br>
+<p>This isn't just "support operations."</p>
+<br>
+<p>You're building:</p>
+<li><strong>Team development pipeline</strong> (everyone grows, internal promotions > external hires)</li><li><strong>Training function</strong> (they don't know they need yet, but foundation exists when they do)</li><li><strong>Strategic positioning</strong> (support as value-add and competitive differentiator)</li><li><strong>Healthy boundaries</strong> (for team AND clients)</li><li><strong>Scalable systems</strong> (that preserve expertise without requiring heroes)</li>
+<br>
+<strong>The goal:</strong> FieldStack's support team scales from 7 analysts handling current load to 15+ analysts handling doubled business without proportionally doubling headcount or sacrificing quality.
+<br>
+<p>Support stops being "the help desk" and becomes "the reason customers stay and buy."</p>
+<br>
+---
+<br>
+<h2>Closing Thoughts</h2>
+<br>
+<p>These modules are flexible by design. Actual implementation order depends on:</p>
+<li>What's most broken right now (quick wins)</li><li>What's most urgent for business (enterprise clients coming on)</li><li>What team is ready for (trust must come before change)</li>
+</ul>
+<p>The through-line: <strong>Make the team the authors of their own success.</strong></p>
+<br>
+<p>Everything here is built on their expertise, with their input, for their benefit. When they succeed, support succeeds. When support succeeds, FieldStack succeeds.</p>
+<br>
+<p>That's how you build something that scales.</p>
+<br>
+---
+<br>
+<strong>Document Version:</strong> Draft for Discussion<br>
+<strong>Last Updated:</strong> November 20, 2025<br>
+<strong>Contact:</strong> Brandon Barlow | <a href="tel:7013015151">(701) 301-5151</a> | <a href="mailto:operator@b8b7.live">operator@b8b7.live</a>
+    </div>
+  </div>
+</body>
+</html> 
