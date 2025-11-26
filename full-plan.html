@@ -258,8 +258,223 @@
       background: rgba(20, 184, 166, 0.15);
     }
 
-    @media (max-width: 768px) {
+    /* Table of Contents Styles */
+    .toc {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 280px;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      overflow-y: auto;
+      transition: width 0.3s ease;
+      z-index: 50;
+      padding: 2rem 0;
+    }
+
+    .toc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .toc-title {
+      font-size: 1.2rem;
+      color: var(--accent-primary);
+      margin: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .toc-toggle {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .toc-toggle:hover {
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .toc-nav {
+      transition: opacity 0.3s ease;
+    }
+
+    .toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .toc-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .toc-link:hover {
+      background: rgba(20, 184, 166, 0.1);
+      color: var(--accent-primary);
+    }
+
+    .toc-link.active {
+      background: rgba(20, 184, 166, 0.15);
+      color: var(--accent-primary);
+      border-left-color: var(--accent-primary);
+    }
+
+    .toc-number {
+      font-weight: 700;
+      color: var(--accent-primary);
+      min-width: 24px;
+      transition: opacity 0.3s ease;
+    }
+
+    .toc-text {
+      transition: opacity 0.3s ease;
+    }
+
+    /* Collapsed ToC State */
+    .toc.collapsed {
+      width: 60px;
+    }
+
+    .toc.collapsed .toc-title,
+    .toc.collapsed .toc-text {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .toc.collapsed .toc-toggle span {
+      transform: rotate(180deg);
+    }
+
+    .toc.collapsed .toc-link {
+      justify-content: center;
+      padding: 0.75rem 0;
+    }
+
+    /* Mobile ToC Toggle Button */
+    .mobile-toc-toggle {
+      display: none;
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      width: 56px;
+      height: 56px;
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 40;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-toc-toggle:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
+    /* Adjust main container to accommodate ToC */
+    .container {
+      margin-left: 300px;
+    }
+
+    /* Tablet: Auto-collapse ToC, expand on hover */
+    @media (max-width: 1200px) {
+      .toc {
+        width: 60px;
+      }
+
+      .toc:hover {
+        width: 280px;
+      }
+
+      .toc-title,
+      .toc-text {
+        opacity: 0;
+      }
+
+      .toc:hover .toc-title,
+      .toc:hover .toc-text {
+        opacity: 1;
+      }
+
+      .toc-toggle span {
+        transform: rotate(180deg);
+      }
+
+      .toc:hover .toc-toggle span {
+        transform: rotate(0deg);
+      }
+
+      .toc-link {
+        justify-content: center;
+        padding: 0.75rem 0;
+      }
+
+      .toc:hover .toc-link {
+        justify-content: flex-start;
+        padding: 0.75rem 1.5rem;
+      }
+
       .container {
+        margin-left: 80px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Hide desktop ToC, show mobile toggle */
+      .toc {
+        transform: translateX(-100%);
+        width: 280px;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .toc.mobile-open {
+        transform: translateX(0);
+      }
+
+      .mobile-toc-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Mobile backdrop when ToC is open */
+      .toc.mobile-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 280px;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+
+      .container {
+        margin-left: 0;
         padding: 1.5rem;
       }
 
@@ -308,6 +523,15 @@
         display: none;
       }
 
+      .toc,
+      .mobile-toc-toggle {
+        display: none;
+      }
+
+      .container {
+        margin-left: 0 !important;
+      }
+
       /* Show URLs after links for print */
       a[href]:after {
         content: " (" attr(href) ")";
@@ -334,6 +558,66 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Table of Contents -->
+  <aside id="toc" class="toc" aria-label="Table of Contents">
+    <div class="toc-header">
+      <h2 class="toc-title">Contents</h2>
+      <button class="toc-toggle" aria-label="Collapse table of contents" aria-expanded="true" aria-controls="toc-nav">
+        <span aria-hidden="true">◀</span>
+      </button>
+    </div>
+
+    <nav id="toc-nav" class="toc-nav">
+      <ul class="toc-list">
+        <li><a href="#executive-summary" class="toc-link">
+          <span class="toc-number">1</span>
+          <span class="toc-text">Executive Summary</span>
+        </a></li>
+        <li><a href="#guiding-principles" class="toc-link">
+          <span class="toc-number">2</span>
+          <span class="toc-text">Guiding Principles</span>
+        </a></li>
+        <li><a href="#module-1" class="toc-link">
+          <span class="toc-number">3</span>
+          <span class="toc-text">Module 1: Trust Building</span>
+        </a></li>
+        <li><a href="#module-2" class="toc-link">
+          <span class="toc-number">4</span>
+          <span class="toc-text">Module 2: Quick Wins</span>
+        </a></li>
+        <li><a href="#module-3" class="toc-link">
+          <span class="toc-number">5</span>
+          <span class="toc-text">Module 3: Documentation</span>
+        </a></li>
+        <li><a href="#module-4" class="toc-link">
+          <span class="toc-number">6</span>
+          <span class="toc-text">Module 4: Metrics & Data</span>
+        </a></li>
+        <li><a href="#module-5" class="toc-link">
+          <span class="toc-number">7</span>
+          <span class="toc-text">Module 5: Scaling Prep</span>
+        </a></li>
+        <li><a href="#module-6" class="toc-link">
+          <span class="toc-number">8</span>
+          <span class="toc-text">Module 6: Strategic Positioning</span>
+        </a></li>
+        <li><a href="#success-indicators" class="toc-link">
+          <span class="toc-number">9</span>
+          <span class="toc-text">Success Indicators</span>
+        </a></li>
+        <li><a href="#conclusion" class="toc-link">
+          <span class="toc-number">10</span>
+          <span class="toc-text">Closing Thoughts</span>
+        </a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Mobile ToC Toggle Button -->
+  <button id="mobile-toc-toggle" class="mobile-toc-toggle" aria-label="Open table of contents" aria-expanded="false" aria-controls="toc">
+    <span aria-hidden="true">☰</span>
+  </button>
+
   <div class="container">
     <nav class="nav" aria-label="Primary navigation">
       <ul>
@@ -355,7 +639,7 @@
     </div>
 
     <div class="section">
-      <h2>Executive Summary</h2>
+      <h2 id="executive-summary">Executive Summary</h2>
       <p>This document outlines a modular approach to building scalable support operations at FieldStack. Rather than a rigid timeline, it presents process components that can be implemented in whatever order makes sense based on actual conditions on the ground.</p>
 
       <div class="context-box">
@@ -379,7 +663,7 @@
     </div>
 
     <div class="section">
-      <h2>Guiding Principles</h2>
+      <h2 id="guiding-principles">Guiding Principles</h2>
 
       <h3>1. Modular Implementation</h3>
       <p>These aren't sequential steps - they're building blocks. Some may happen in week 1, some in week 12. The goal is flexibility based on actual team needs and business priorities.</p>
@@ -395,7 +679,7 @@
     </div>
 
     <div class="section">
-      <h2>MODULE 1: Trust Building Activities</h2>
+      <h2 id="module-1">MODULE 1: Trust Building Activities</h2>
       <p class="module-timing">Can happen: Anytime, but critical in first 30 days</p>
 
       <div class="subsection">
@@ -468,7 +752,7 @@
     </div>
 
     <div class="section">
-      <h2>MODULE 2: Quick Win Opportunities</h2>
+      <h2 id="module-2">MODULE 2: Quick Win Opportunities</h2>
       <p class="module-timing">Can happen: As soon as identified, ideally within first 60 days</p>
 
       <div class="subsection">
@@ -578,7 +862,7 @@
     </div>
 
     <div class="section">
-      <h2>MODULE 3: Foundation Building - Documentation</h2>
+      <h2 id="module-3">MODULE 3: Foundation Building - Documentation</h2>
       <p class="module-timing">Can happen: After trust is built, can span 30-90 days</p>
 
       <div class="subsection">
@@ -661,7 +945,7 @@
     </div>
 
     <div class="section">
-      <h2>MODULE 4: Foundation Building - Metrics & Data</h2>
+      <h2 id="module-4">MODULE 4: Foundation Building - Metrics & Data</h2>
       <p class="module-timing">Can happen: After documentation is underway, 60-90 days</p>
 
       <div class="subsection">
@@ -813,7 +1097,7 @@
     </div>
 
     <div class="section">
-      <h2>MODULE 5: Scaling Preparation</h2>
+      <h2 id="module-5">MODULE 5: Scaling Preparation</h2>
       <p class="module-timing">Can happen: 60-90 days, after foundation is solid</p>
 
       <div class="subsection">
@@ -919,7 +1203,7 @@
     </div>
 
     <div class="section">
-      <h2>MODULE 6: Strategic Positioning</h2>
+      <h2 id="module-6">MODULE 6: Strategic Positioning</h2>
       <p class="module-timing">Can happen: Ongoing, especially 60-90 days</p>
 
       <div class="subsection">
@@ -1025,7 +1309,7 @@
     </div>
 
     <div class="section">
-      <h2>Success Indicators</h2>
+      <h2 id="success-indicators">Success Indicators</h2>
 
       <h3>30 Days</h3>
       <ul>
@@ -1074,7 +1358,7 @@
     </div>
 
     <div class="section">
-      <h2>Closing Thoughts</h2>
+      <h2 id="conclusion">Closing Thoughts</h2>
 
       <p>These modules are flexible by design. Actual implementation order depends on:</p>
       <ul>
@@ -1110,5 +1394,145 @@
       </div>
     </div>
   </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // DOM Elements
+      const toc = document.getElementById('toc');
+      const tocToggle = document.querySelector('.toc-toggle');
+      const mobileTocToggle = document.getElementById('mobile-toc-toggle');
+      const tocLinks = document.querySelectorAll('.toc-link');
+      const sections = document.querySelectorAll('h2[id]');
+
+      // Load saved ToC state from localStorage
+      const savedCollapsedState = localStorage.getItem('toc-collapsed');
+      if (savedCollapsedState === 'true' && window.innerWidth >= 1200) {
+        toc.classList.add('collapsed');
+        tocToggle.setAttribute('aria-expanded', 'false');
+        tocToggle.setAttribute('aria-label', 'Expand table of contents');
+      }
+
+      // Desktop Toggle: Collapse/Expand
+      tocToggle.addEventListener('click', function() {
+        const isCollapsed = toc.classList.toggle('collapsed');
+        tocToggle.setAttribute('aria-expanded', !isCollapsed);
+        tocToggle.setAttribute('aria-label', isCollapsed ? 'Expand table of contents' : 'Collapse table of contents');
+
+        // Save state to localStorage
+        localStorage.setItem('toc-collapsed', isCollapsed);
+      });
+
+      // Mobile Toggle: Open/Close overlay
+      mobileTocToggle.addEventListener('click', function() {
+        const isOpen = toc.classList.toggle('mobile-open');
+        mobileTocToggle.setAttribute('aria-expanded', isOpen);
+        mobileTocToggle.setAttribute('aria-label', isOpen ? 'Close table of contents' : 'Open table of contents');
+
+        // Prevent body scroll when ToC is open on mobile
+        if (isOpen) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Close mobile ToC when clicking backdrop
+      toc.addEventListener('click', function(e) {
+        if (e.target === toc && toc.classList.contains('mobile-open')) {
+          toc.classList.remove('mobile-open');
+          mobileTocToggle.setAttribute('aria-expanded', 'false');
+          mobileTocToggle.setAttribute('aria-label', 'Open table of contents');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Close mobile ToC with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && toc.classList.contains('mobile-open')) {
+          toc.classList.remove('mobile-open');
+          mobileTocToggle.setAttribute('aria-expanded', 'false');
+          mobileTocToggle.setAttribute('aria-label', 'Open table of contents');
+          document.body.style.overflow = '';
+          mobileTocToggle.focus();
+        }
+      });
+
+      // Scroll spy: Highlight active section
+      function updateActiveLink() {
+        let currentSection = '';
+        const scrollPosition = window.scrollY + 100; // Offset for better UX
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+          }
+        });
+
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + currentSection) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      // Throttle scroll spy for performance
+      let scrollTimeout;
+      window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+          window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(updateActiveLink);
+      });
+
+      // Close mobile ToC when clicking a link
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 768 && toc.classList.contains('mobile-open')) {
+            toc.classList.remove('mobile-open');
+            mobileTocToggle.setAttribute('aria-expanded', 'false');
+            mobileTocToggle.setAttribute('aria-label', 'Open table of contents');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+
+      // Handle window resize - reset mobile state and collapsed state
+      let resizeTimeout;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+          // Close mobile ToC on resize
+          if (toc.classList.contains('mobile-open')) {
+            toc.classList.remove('mobile-open');
+            mobileTocToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          }
+
+          // Restore collapsed state on desktop, remove on tablet/mobile
+          if (window.innerWidth >= 1200) {
+            const savedState = localStorage.getItem('toc-collapsed');
+            if (savedState === 'true') {
+              toc.classList.add('collapsed');
+              tocToggle.setAttribute('aria-expanded', 'false');
+            }
+          } else {
+            toc.classList.remove('collapsed');
+          }
+        }, 250);
+      });
+
+      // Initial scroll spy call
+      updateActiveLink();
+    })();
+  </script>
 </body>
 </html>
