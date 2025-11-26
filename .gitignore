@@ -35,3 +35,16 @@ $RECYCLE.BIN/
 # Mac
 .AppleDouble
 .LSOverride
+
+# Email drafts and personal notes
+email-draft.txt
+
+# VS Code workspace files
+*.code-workspace
+
+# Old versions
+v2-gitpages/
+
+# SSH keys (explicit file patterns)
+ssh
+ssh.pub

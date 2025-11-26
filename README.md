@@ -48,17 +48,6 @@ Post-90-day strategic initiative exploring support team's access to customer dat
 
 ---
 
-## 🛠️ Built With
-
-- Hand-coded HTML/CSS
-- Dark theme with teal accents (#14b8a6)
-- Fully responsive design
-- Print-optimized styles
-- No external dependencies (self-contained)
-- Accessibility-focused (WCAG compliant)
-
----
-
 ## 💡 Background
 
 This plan was developed based on three interview rounds where I learned about:
