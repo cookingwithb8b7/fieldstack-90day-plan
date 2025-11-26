@@ -378,14 +378,7 @@
 
     .toc.collapsed .toc-title,
     .toc.collapsed .toc-text {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .toc.collapsed .toc-toggle {
-      /* Keep toggle button visible and clickable */
-      opacity: 1;
-      pointer-events: auto;
+      display: none;
     }
 
     .toc.collapsed .toc-toggle span {
@@ -404,6 +397,7 @@
 
     .toc.collapsed .toc-header {
       justify-content: center;
+      padding: 0.5rem;
     }
 
     /* Mobile ToC Toggle Button */
